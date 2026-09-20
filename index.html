@@ -3,21 +3,163 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Метафорические карты · Metaphorical Cards</title>
+<title>Метафорические карты — карта дня, расклады и магический шар</title>
+<meta name="description" content="Метафорические карты для самопознания: карта дня, расклады, магический шар с виджетом и история карт. Без аккаунта, интернета и рекламы. Приложение для Android.">
+<meta name="theme-color" content="#0E0920">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="assets/logo.svg" type="image/svg+xml">
+<link rel="canonical" href="https://mikolagil.github.io/metaphorical-cards-legal/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="Метафорические карты">
+<meta property="og:description" content="Карта дня, расклады и магический шар. Спокойное приложение для самопознания — без аккаунта, интернета и рекламы.">
+<meta property="og:image" content="https://mikolagil.github.io/metaphorical-cards-legal/assets/og.jpg">
+<meta property="og:url" content="https://mikolagil.github.io/metaphorical-cards-legal/">
 <style>
-  :root { color-scheme: dark light; }
-  body { font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; background: #0E0920; color: #F2ECE3; }
-  h1 { font-size: 1.6rem; line-height: 1.25; } h2 { font-size: 1.15rem; margin-top: 2rem; color: #D9B26A; }
-  a { color: #D9B26A; } .muted { color: #A99CC9; font-size: .9rem; }
-  hr { border: 0; border-top: 1px solid #2A1F52; margin: 3rem 0; }
-  @media (prefers-color-scheme: light) { body { background: #fff; color: #1b1b1b; } h2, a { color: #6a4c00; } .muted { color: #555; } hr { border-top-color: #ddd; } }
+  :root {
+    --ink: #0E0920; --surface: #150E2E; --raised: #1B1038; --violet: #2E1F63;
+    --line: #2A1F52; --line-soft: #3E2F7A; --lavender: #8A7BB8; --lavender-text: #A99CC9;
+    --pearl: #F2ECE3; --gold: #D9B26A; --gold-light: #F6E7C6; --rose: #E59C8C;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; color: var(--pearl); background: var(--ink);
+    background-image: radial-gradient(ellipse 90% 60% at 50% 0%, var(--violet) 0%, var(--ink) 70%);
+    background-repeat: no-repeat;
+    font: 17px/1.65 "Unbounded", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  a { color: var(--gold); }
+  a:hover { color: var(--gold-light); }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+  h1, h2, h3 { font-weight: 400; line-height: 1.25; margin: 0; }
+  h2 { font-size: 1.5rem; letter-spacing: .02em; margin-bottom: 1.4rem; }
+  h3 { font-size: 1.05rem; color: var(--gold-light); margin-bottom: .5rem; }
+  p { margin: 0 0 1rem; color: var(--lavender-text); }
+  section { padding: 56px 0 0; }
+
+  .hero { text-align: center; padding: 64px 0 8px; }
+  .hero img.logo { height: 104px; width: auto; }
+  .hero h1 { font-size: clamp(1.9rem, 6vw, 3rem); margin: 20px 0 14px; letter-spacing: .01em; }
+  .lead { max-width: 640px; margin: 0 auto 28px; font-size: 1.1rem; color: var(--lavender-text); }
+  .stores { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  /* Когда приложение опубликуют, заменить <span class="store"> на <a class="store" href="ссылка">. */
+  .store {
+    display: inline-block; padding: 12px 22px; border: 1px solid var(--line-soft);
+    border-radius: 8px; background: var(--surface); color: var(--pearl); font-size: .95rem; text-decoration: none;
+  }
+  .store small { display: block; color: var(--lavender); font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; }
+
+  .shots { display: flex; gap: 14px; overflow-x: auto; padding: 6px 2px 18px; scroll-snap-type: x mandatory; }
+  .shots figure { margin: 0; flex: 1 0 150px; max-width: 200px; scroll-snap-align: center; }
+  .shots img {
+    display: block; width: 100%; height: auto; border-radius: 16px;
+    border: 1px solid var(--line-soft); box-shadow: 0 10px 40px rgba(46, 31, 99, .55);
+  }
+  .shots figcaption { margin-top: 10px; font-size: .78rem; text-align: center; color: var(--lavender); }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 16px; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 20px 22px 8px; }
+  .card h3::before { content: "✦"; color: var(--gold); margin-right: .55em; font-size: .9em; }
+  .card p { font-size: .95rem; }
+
+  .ball { display: grid; gap: 28px; align-items: center; grid-template-columns: 1fr; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 6px 0 18px; }
+  .chip { padding: 7px 14px; border-radius: 999px; font-size: .88rem; background: #0B1240; border: 1px solid #1B2A6B; }
+  .chip.yes { color: var(--gold-light); } .chip.maybe { color: var(--lavender-text); } .chip.no { color: var(--rose); }
+  @media (min-width: 760px) { .ball { grid-template-columns: 1.2fr .8fr; } }
+  .ball img { width: 100%; max-width: 250px; margin: 0 auto; display: block; border-radius: 16px; border: 1px solid var(--line-soft); box-shadow: 0 10px 40px rgba(46, 31, 99, .55); }
+
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; text-align: center; }
+  .fact { border: 1px solid var(--line); border-radius: 6px; padding: 22px 16px; background: var(--surface); }
+  .fact b { display: block; font-weight: 400; font-size: 1.15rem; color: var(--gold-light); margin-bottom: 6px; }
+  .fact span { font-size: .88rem; color: var(--lavender-text); }
+
+  .contact { text-align: center; }
+  .contact a.mail { font-size: 1.1rem; }
+  footer { margin-top: 64px; padding: 28px 0 44px; border-top: 1px solid var(--line); text-align: center; font-size: .85rem; color: var(--lavender); }
+  footer p { font-size: .85rem; color: var(--lavender); }
+  footer nav { margin-bottom: 14px; display: flex; flex-wrap: wrap; gap: 8px 22px; justify-content: center; }
 </style>
 </head>
 <body>
-<h1>Метафорические карты <span class="muted">· Metaphorical Cards</span></h1>
-<ul>
-  <li><a href="privacy-policy.html">Политика конфиденциальности · Privacy Policy</a></li>
-  <li><a href="terms.html">Условия использования · Terms of Use</a></li>
-</ul>
+<div class="wrap">
+
+  <header class="hero">
+    <img class="logo" src="assets/logo.svg" alt="Метафорические карты — логотип: веер из трёх карт и созвездие">
+    <h1>Метафорические карты</h1>
+    <p class="lead">Спокойное приложение для самопознания. Вытяните карту, посмотрите на образ и прислушайтесь к себе: ответ, который вы ищете, уже живёт внутри вас.</p>
+    <div class="stores">
+      <span class="store"><small>Скоро</small>RuStore</span>
+      <span class="store"><small>Скоро</small>Google Play</span>
+    </div>
+  </header>
+
+  <section id="screens" aria-label="Скриншоты приложения">
+    <div class="shots">
+      <figure><img src="assets/screens/01-main.jpg" width="450" height="800" alt="Главный экран приложения" loading="lazy"><figcaption>Главный экран</figcaption></figure>
+      <figure><img src="assets/screens/02-choose.jpg" width="450" height="800" alt="Шесть рубашек карт на выбор" loading="lazy"><figcaption>Выберите карту</figcaption></figure>
+      <figure><img src="assets/screens/03-card.jpg" width="450" height="800" alt="Карта дня с акварельным образом" loading="lazy"><figcaption>Образ карты</figcaption></figure>
+      <figure><img src="assets/screens/04-meaning.jpg" width="450" height="800" alt="Толкование карты" loading="lazy"><figcaption>Толкование</figcaption></figure>
+      <figure><img src="assets/screens/05-ball.jpg" width="450" height="800" alt="Магический шар с ответом" loading="lazy"><figcaption>Магический шар</figcaption></figure>
+      <figure><img src="assets/screens/06-history.jpg" width="450" height="800" alt="История вытянутых карт" loading="lazy"><figcaption>История</figcaption></figure>
+    </div>
+  </section>
+
+  <section id="features">
+    <h2>Что внутри</h2>
+    <div class="grid">
+      <article class="card"><h3>Карта дня</h3><p>Одна карта на сегодня: выберите рубашку — и откроется образ с толкованием. Новая карта появится завтра, а в 11:00 приложение может напомнить о ней.</p></article>
+      <article class="card"><h3>Расклады</h3><p>Выберите колоду, дождитесь, пока карты перетасуются, и выберите одну из шести рубашек. Хочется ещё — вытяните следующую.</p></article>
+      <article class="card"><h3>Магический шар</h3><p>Задайте вопрос, на который можно ответить «да» или «нет», и коснитесь шара. Он встряхнётся и ответит — весело, загадочно или категорично.</p></article>
+      <article class="card"><h3>Виджет на рабочий стол</h3><p>Шар прямо на главном экране телефона: нажали — получили ответ, не открывая приложение.</p></article>
+      <article class="card"><h3>История</h3><p>Все вытянутые карты за последний год, карта дня отмечена. Можно вернуться к образу, который отозвался.</p></article>
+      <article class="card"><h3>Поделиться картой</h3><p>Отправьте друзьям образ и толкование через любое приложение на телефоне.</p></article>
+    </div>
+  </section>
+
+  <section id="ball" aria-labelledby="ball-title">
+    <div class="ball">
+      <div>
+        <h2 id="ball-title">Шар, который отвечает с характером</h2>
+        <p>В шаре сорок ответов: одни ободряют, другие интригуют, третьи говорят «нет» прямо. Это игра, а не предсказание: шар отвечает наугад и в шутку.</p>
+        <div class="chips" aria-label="Примеры ответов">
+          <span class="chip yes">Однозначно да!</span>
+          <span class="chip yes">Да! И даже с бантиком</span>
+          <span class="chip maybe">Спроси у кота, он в курсе</span>
+          <span class="chip maybe">Пятьдесят на пятьдесят</span>
+          <span class="chip no">Не в этой жизни</span>
+          <span class="chip no">Шансы как у снеговика летом</span>
+        </div>
+      </div>
+      <img src="assets/screens/05-ball.jpg" width="450" height="800" alt="Экран магического шара с ответом «Да! И даже с бантиком»" loading="lazy">
+    </div>
+  </section>
+
+  <section id="privacy" aria-label="Приватность">
+    <div class="facts">
+      <div class="fact"><b>Без аккаунта</b><span>Ничего не нужно вводить и регистрировать</span></div>
+      <div class="fact"><b>Без интернета</b><span>Приложение работает полностью на телефоне</span></div>
+      <div class="fact"><b>Без рекламы</b><span>Никаких баннеров и отслеживания</span></div>
+      <div class="fact"><b>Ваши данные — у вас</b><span>История карт хранится только на устройстве</span></div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Вопросы и предложения</h2>
+    <p><a class="mail" href="mailto:mathaphoricalcards.com@gmail.com">mathaphoricalcards.com@gmail.com</a></p>
+  </section>
+
+  <footer>
+    <nav>
+      <a href="privacy-policy.html">Политика конфиденциальности</a>
+      <a href="terms.html">Условия использования</a>
+      <a href="privacy-policy.html#en">Privacy Policy (English)</a>
+    </nav>
+    <p>Метафорические карты — инструмент для размышления и развлечения. Приложение не заменяет консультацию врача или психолога.</p>
+    <p>© 2026 Метафорические карты · Metaphorical Cards</p>
+  </footer>
+
+</div>
 </body>
 </html>
