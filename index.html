@@ -98,14 +98,17 @@
     border-bottom: 1px solid rgba(62, 47, 122, .45);
   }
   .nav .wrap { display: flex; align-items: center; gap: 24px; height: 64px; }
-  .brand { display: flex; align-items: center; gap: 10px; color: var(--pearl); text-decoration: none; font-family: var(--display); font-size: .92rem; white-space: nowrap; }
-  .brand img { width: 34px; height: 34px; }
-  .nav nav { display: none; gap: 26px; margin-left: auto; }
-  .nav nav a { color: var(--lavender-text); text-decoration: none; font-size: .92rem; }
+  .brand { display: flex; align-items: center; gap: 10px; min-width: 0; color: var(--pearl); text-decoration: none; font-family: var(--display); font-size: .92rem; white-space: nowrap; }
+  .brand img { width: 34px; height: 34px; flex: none; }
+  .brand span { overflow: hidden; text-overflow: ellipsis; }
+  .nav nav { display: none; gap: 22px; margin-left: auto; }
+  .nav nav a { color: var(--lavender-text); text-decoration: none; font-size: .9rem; white-space: nowrap; }
   .nav nav a:hover { color: var(--pearl); }
-  .nav .btn { margin-left: auto; padding: 9px 16px; font-size: .78rem; }
-  @media (min-width: 900px) { .nav nav { display: flex; } .nav .btn { margin-left: 0; } }
-  @media (max-width: 380px) { .brand span { display: none; } }
+  .nav .btn { flex: none; margin-left: auto; padding: 9px 16px; font-size: .78rem; white-space: nowrap; }
+  /* Ссылки разделов — только там, где они помещаются вместе с названием и
+     кнопкой; на телефоне от названия остаётся логотип. */
+  @media (min-width: 1100px) { .nav nav { display: flex; } .nav .btn { margin-left: 0; } }
+  @media (max-width: 559px) { .brand span { display: none; } }
 
   /* Кнопки */
   .btn {
