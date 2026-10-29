@@ -27,6 +27,7 @@
   "name": "Метафорические карты",
   "alternateName": "Metaphorical Cards",
   "operatingSystem": "Android",
+  "installUrl": "https://play.google.com/store/apps/details?id=com.metaphoricalcards.app",
   "applicationCategory": "LifestyleApplication",
   "inLanguage": "ru",
   "description": "Метафорические ассоциативные карты для самопознания: карта дня, колоды, дневник и магический шар.",
@@ -124,6 +125,9 @@
   .btn-ghost:hover { border-color: var(--lavender); color: var(--pearl); }
   .btn small { display: block; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; opacity: .75; font-weight: 400; }
   .btn .label { line-height: 1.25; text-align: left; }
+  /* Плашка без ссылки: приложение для iPhone ещё не вышло. */
+  .btn.soon { border: 1px dashed var(--line-soft); color: var(--lavender-text); background: rgba(21, 14, 46, .4); cursor: default; }
+  .btn.soon small { color: var(--gold-light); opacity: 1; }
 
   /* Первый экран */
   .hero { padding: 56px 0 24px; overflow-x: clip; }
@@ -134,7 +138,6 @@
   .hero .tagline { font-size: clamp(1.5rem, 4.4vw, 2.15rem); line-height: 1.2; margin: 14px 0 22px; }
   .hero .lead { font-size: 1.1rem; max-width: 560px; }
   .cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 18px; }
-  .beta { font-size: .95rem; color: var(--lavender); }
   .stats { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 34px; padding-top: 24px; border-top: 1px solid var(--line); }
   .stats div { font-size: .9rem; color: var(--lavender-text); }
   .stats b { display: block; font-family: var(--display); font-weight: 400; font-size: 1.25rem; color: var(--gold-light); }
@@ -306,7 +309,7 @@
       <a href="#pricing">Цены</a>
       <a href="#faq">Вопросы</a>
     </nav>
-    <a class="btn btn-gold" href="#beta" data-play><span data-play-text>Скоро в Google Play</span></a>
+    <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.metaphoricalcards.app" rel="noopener"><span>Google Play</span></a>
   </div>
 </header>
 
@@ -320,13 +323,15 @@
         <p class="tagline accent">Ответ, который уже живёт внутри вас</p>
         <p class="lead">Вытяните карту, посмотрите на образ и прислушайтесь к себе. Карта дня, четыре колоды, дневник самопознания и магический шар — в спокойном приложении без регистрации.</p>
         <div class="cta">
-          <a class="btn btn-gold" href="#beta" data-play>
+          <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.metaphoricalcards.app" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3.8v16.4a.8.8 0 0 0 1.2.7l14-8.2a.8.8 0 0 0 0-1.4l-14-8.2A.8.8 0 0 0 5 3.8Z"/></svg>
-            <span class="label"><small data-play-small>Скоро</small><span data-play-text>в Google Play</span></span>
+            <span class="label"><small>Скачать</small><span>в Google Play</span></span>
           </a>
+          <span class="btn soon" role="note" aria-label="Версия для iPhone скоро появится в App Store">
+            <span class="label"><small>Скоро</small><span>в App Store</span></span>
+          </span>
           <a class="btn btn-ghost" href="#how">Как это работает</a>
         </div>
-        <p class="beta" id="beta" data-beta>Хотите попробовать раньше всех? <a href="mailto:mathaphoricalcards.com@gmail.com?subject=%D0%A5%D0%BE%D1%87%D1%83%20%D0%B2%20%D1%82%D0%B5%D1%81%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5">Напишите нам</a> — пришлём приглашение в тестирование.</p>
         <div class="stats">
           <div><b>288 карт</b>в четырёх колодах</div>
           <div><b>Без аккаунта</b>ничего не нужно вводить</div>
@@ -643,7 +648,7 @@
         </details>
         <details>
           <summary>Есть ли версия для iPhone?</summary>
-          <p>Пока только для Android.</p>
+          <p>Пока только для Android. Версия для iPhone скоро появится в App Store: когда она выйдет, здесь будет ссылка.</p>
         </details>
       </div>
     </div>
@@ -683,24 +688,7 @@
 </footer>
 
 <script>
-  // Ссылка на приложение в Google Play. Пока пусто, кнопки ведут к
-  // приглашению в тестирование. Когда приложение выйдет, вписать сюда
-  // https://play.google.com/store/apps/details?id=com.metaphoricalcards.app
-  const PLAY_URL = '';
-
   document.documentElement.classList.add('js');
-
-  if (PLAY_URL) {
-    document.querySelectorAll('[data-play]').forEach((a) => {
-      a.href = PLAY_URL;
-      a.rel = 'noopener';
-      const small = a.querySelector('[data-play-small]');
-      const text = a.querySelector('[data-play-text]');
-      if (small) { small.textContent = 'Скачать'; text.textContent = 'в Google Play'; }
-      else if (text) { text.textContent = 'Google Play'; }
-    });
-    document.querySelectorAll('[data-beta]').forEach((p) => p.remove());
-  }
 
   // Плавное появление блоков.
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
