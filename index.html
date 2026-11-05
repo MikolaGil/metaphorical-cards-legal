@@ -105,11 +105,19 @@
   .nav nav { display: none; gap: 22px; margin-left: auto; }
   .nav nav a { color: var(--lavender-text); text-decoration: none; font-size: .9rem; white-space: nowrap; }
   .nav nav a:hover { color: var(--pearl); }
-  .nav .btn { flex: none; margin-left: auto; padding: 9px 16px; font-size: .78rem; white-space: nowrap; }
+  .nav .btn { flex: none; padding: 9px 16px; font-size: .78rem; white-space: nowrap; }
+  .socials { display: flex; gap: 10px; flex: none; margin-left: auto; }
+  .socials a {
+    display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
+    border-radius: 50%; border: 1px solid var(--line-soft); background: rgba(21, 14, 46, .6);
+    color: var(--lavender-text); transition: border-color .2s ease, color .2s ease;
+  }
+  .socials a:hover { border-color: var(--lavender); color: var(--pearl); }
+  .socials svg { width: 19px; height: 19px; }
   /* Ссылки разделов — только там, где они помещаются вместе с названием и
      кнопкой; на телефоне от названия остаётся логотип. */
-  @media (min-width: 1100px) { .nav nav { display: flex; } .nav .btn { margin-left: 0; } }
-  @media (max-width: 559px) { .brand span { display: none; } }
+  @media (min-width: 1100px) { .nav nav { display: flex; } .socials { margin-left: 0; } }
+  @media (max-width: 559px) { .brand span { display: none; } .nav .wrap { gap: 14px; } }
 
   /* Кнопки */
   .btn {
@@ -309,6 +317,14 @@
       <a href="#pricing">Цены</a>
       <a href="#faq">Вопросы</a>
     </nav>
+    <div class="socials">
+      <a href="https://www.instagram.com/metaforicheskie.cards/" rel="noopener" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg>
+      </a>
+      <a href="https://t.me/mak_karty_app" rel="noopener" aria-label="Telegram-группа" title="Telegram-группа">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 4.5 2.8 11.7l5.4 2 2 6.3 3-3.8 4.6 3.4z"/><path d="m8.2 13.7 9.3-6.6"/></svg>
+      </a>
+    </div>
     <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.metaphoricalcards.app" rel="noopener"><span>Google Play</span></a>
   </div>
 </header>
