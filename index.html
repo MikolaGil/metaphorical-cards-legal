@@ -157,13 +157,14 @@
   }
   .stage .fan.left { left: 0; transform: rotate(-12deg); animation: float-l 9s ease-in-out infinite; }
   .stage .fan.right { right: 0; transform: rotate(12deg); animation: float-r 10s ease-in-out infinite; }
-  .stage .phone { position: absolute; left: 50%; top: 0; width: 258px; transform: translateX(-50%); }
+  .stage .fan.center { left: 50%; top: 26px; width: 262px; z-index: 1; transform: translateX(-50%); animation: float-c 11s ease-in-out infinite; }
   @keyframes float-l { 50% { transform: rotate(-10deg) translateY(-10px); } }
   @keyframes float-r { 50% { transform: rotate(10deg) translateY(-12px); } }
+  @keyframes float-c { 50% { transform: translateX(-50%) translateY(-8px); } }
   @media (max-width: 480px) {
     .stage { height: 470px; }
-    .stage .phone { width: 216px; }
     .stage .fan { width: 150px; top: 80px; }
+    .stage .fan.center { width: 204px; top: 30px; }
     .stage .fan.left { left: -6px; } .stage .fan.right { right: -6px; }
   }
 
@@ -357,7 +358,7 @@
       <div class="stage" aria-hidden="true">
         <img class="fan left" src="assets/cards/spok-1.webp" width="400" height="600" alt="">
         <img class="fan right" src="assets/cards/rost-3.webp" width="400" height="600" alt="">
-        <figure class="phone"><img src="assets/screens/03-card.webp" width="540" height="960" alt="" fetchpriority="high"></figure>
+        <img class="fan center" src="assets/cards/vera-56.webp" width="400" height="600" alt="" fetchpriority="high">
       </div>
     </div>
   </section>
