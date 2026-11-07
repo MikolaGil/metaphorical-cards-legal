@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Метафорические карты — карта дня, дневник и магический шар</title>
-<meta name="description" content="Метафорические ассоциативные карты для самопознания: карта дня, четыре колоды, дневник с итогами месяца и магический шар с виджетом. Без регистрации. Приложение для Android.">
+<meta name="description" content="Метафорические ассоциативные карты для самопознания: карта дня, четыре колоды, дневник с итогами месяца и магический шар с виджетом. Без регистрации. Приложение для Android и iPhone.">
 <meta name="theme-color" content="#0E0920">
 <meta name="color-scheme" content="dark">
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml">
@@ -26,7 +26,7 @@
   "@type": "MobileApplication",
   "name": "Метафорические карты",
   "alternateName": "Metaphorical Cards",
-  "operatingSystem": "Android",
+  "operatingSystem": ["Android", "iOS"],
   "installUrl": "https://play.google.com/store/apps/details?id=com.metaphoricalcards.app",
   "applicationCategory": "LifestyleApplication",
   "inLanguage": "ru",
@@ -133,9 +133,8 @@
   .btn-ghost:hover { border-color: var(--lavender); color: var(--pearl); }
   .btn small { display: block; font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; opacity: .75; font-weight: 400; }
   .btn .label { line-height: 1.25; text-align: left; }
-  /* Плашка без ссылки: приложение для iPhone ещё не вышло. */
-  .btn.soon { border: 1px dashed var(--line-soft); color: var(--lavender-text); background: rgba(21, 14, 46, .4); cursor: default; }
-  .btn.soon small { color: var(--gold-light); opacity: 1; }
+  /* В шапке на узком экране остаётся одна кнопка. */
+  @media (max-width: 679px) { .nav .btn.store-ios { display: none; } }
 
   /* Первый экран */
   .hero { padding: 56px 0 24px; overflow-x: clip; }
@@ -326,6 +325,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 4.5 2.8 11.7l5.4 2 2 6.3 3-3.8 4.6 3.4z"/><path d="m8.2 13.7 9.3-6.6"/></svg>
       </a>
     </div>
+    <a class="btn btn-ghost store-ios" href="https://apps.apple.com/app/id6830115139" rel="noopener"><span>App Store</span></a>
     <a class="btn btn-gold" href="https://play.google.com/store/apps/details?id=com.metaphoricalcards.app" rel="noopener"><span>Google Play</span></a>
   </div>
 </header>
@@ -335,7 +335,7 @@
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="eyebrow">Приложение для Android</p>
+        <p class="eyebrow">Приложение для Android и iPhone</p>
         <h1>Метафорические карты</h1>
         <p class="tagline accent">Ответ, который уже живёт внутри вас</p>
         <p class="lead">Вытяните карту, посмотрите на образ и прислушайтесь к себе. Карта дня, четыре колоды, дневник самопознания и магический шар — в спокойном приложении без регистрации.</p>
@@ -344,9 +344,10 @@
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3.8v16.4a.8.8 0 0 0 1.2.7l14-8.2a.8.8 0 0 0 0-1.4l-14-8.2A.8.8 0 0 0 5 3.8Z"/></svg>
             <span class="label"><small>Скачать</small><span>в Google Play</span></span>
           </a>
-          <span class="btn soon" role="note" aria-label="Версия для iPhone скоро появится в App Store">
-            <span class="label"><small>Скоро</small><span>в App Store</span></span>
-          </span>
+          <a class="btn btn-gold" href="https://apps.apple.com/app/id6830115139" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
+            <span class="label"><small>Скачать</small><span>в App Store</span></span>
+          </a>
           <a class="btn btn-ghost" href="#how">Как это работает</a>
         </div>
         <div class="stats">
@@ -552,7 +553,7 @@
       <div class="section-head reveal">
         <p class="eyebrow">Цены</p>
         <h2>Бесплатно — и&nbsp;больше по желанию</h2>
-        <p>Цены показываются в Google Play в валюте вашей страны.</p>
+        <p>Цены показываются в Google Play и App Store в валюте вашей страны.</p>
       </div>
       <div class="plans reveal">
         <div class="plan">
@@ -576,7 +577,7 @@
             <li>Итоги месяца и пин-код</li>
             <li>Вечернее напоминание</li>
           </ul>
-          <p class="note">Отменить можно в любой момент в Google Play.</p>
+          <p class="note">Отменить можно в любой момент в Google Play или App Store.</p>
         </div>
         <div class="plan">
           <p class="eyebrow">Разовая покупка</p>
@@ -645,11 +646,11 @@
         </details>
         <details>
           <summary>Что даёт подписка?</summary>
-          <p>Отключает рекламу и открывает дневник самопознания с итогами месяца, пин-кодом и напоминанием. Подписка бывает на месяц и на год; отменить её можно в Google Play → «Платежи и подписки».</p>
+          <p>Отключает рекламу и открывает дневник самопознания с итогами месяца, пин-кодом и напоминанием. Подписка бывает на месяц и на год; отменить её можно в Google Play → «Платежи и подписки», а на iPhone — в «Настройки» → ваше имя → «Подписки».</p>
         </details>
         <details>
           <summary>Колода покупается навсегда?</summary>
-          <p>Да, это разовая покупка в Google Play, подписка для неё не нужна. Покупка привязана к вашему аккаунту Google: после переустановки приложения нажмите «Восстановить покупки».</p>
+          <p>Да, это разовая покупка в Google Play или App Store, подписка для неё не нужна. Покупка привязана к вашему аккаунту Google или Apple ID: после переустановки приложения нажмите «Восстановить покупки».</p>
         </details>
         <details>
           <summary>Что будет с записями, если подписка закончится?</summary>
@@ -661,11 +662,11 @@
         </details>
         <details>
           <summary>Перенесутся ли карты и записи на новый телефон?</summary>
-          <p>Приложение само ничего не выгружает. Если на телефоне включено резервное копирование Google, Android сохраняет данные приложений в вашем аккаунте и может вернуть их при переходе на новое устройство.</p>
+          <p>Приложение само ничего не выгружает. Если на телефоне включено резервное копирование (Google на Android, iCloud на iPhone), система сохраняет данные приложений в вашем аккаунте и может вернуть их при переходе на новое устройство.</p>
         </details>
         <details>
           <summary>Есть ли версия для iPhone?</summary>
-          <p>Пока только для Android. Версия для iPhone скоро появится в App Store: когда она выйдет, здесь будет ссылка.</p>
+          <p>Да, приложение есть в <a href="https://apps.apple.com/app/id6830115139" rel="noopener">App Store</a>. Оно такое же, как на Android: карта дня, колоды, дневник и магический шар. Виджеты на рабочий стол пока только для Android.</p>
         </details>
       </div>
     </div>
